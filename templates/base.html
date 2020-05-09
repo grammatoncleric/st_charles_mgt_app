@@ -1,12 +1,74 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/camera.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>St Charles Borromeo Church, 1004</title>
 </head>
 <body>
+
+  <!--Top Bar-->
+{% include 'partials/_topbar.html' %}
+
+<!--Nav Bar-->
+{% include 'partials/_navbar.html' %}
+    
+<!--Main Content-->
     {% block content %}
+
     {% endblock %}
+
+<!--Footer-->
+{% include 'partials/_footer.html' %}
+
+  
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script> 
+    <script src="{% static 'js/superfish.js' %}"></script>
+    <script src="{% static 'js/jquery.equalheights.js' %}"></script>
+    <script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+    <script src="{% static 'js/tmStickUp.js' %}"></script>
+    <script src="{% static 'js/jquery.ui.totop.js' %}"></script>
+    <script src="{% static 'js/camera.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.js' %}"></script> 
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="{% static 'js/jquery.mobile.customized.min.js' %}"></script>
+    <!--<![endif]-->
+    <script>
+     $(window).load(function(){
+      $().UItoTop({ easingType: 'easeOutQuart' });
+      $('#stuck_container').tmStickUp({});  
+    
+      $('#camera_wrap').camera({
+        loader: false,
+        pagination: false ,
+        minHeight: '400',
+        thumbnails: false,
+        height: '38.07291666666667%',
+        caption: false,
+        navigation: true,
+        fx: 'mosaic'
+      });
+    
+      $("#owl").owlCarousel({
+        items : 3, //10 items above 1000px browser width
+        itemsDesktop : [995,1], //5 items between 1000px and 901px
+        itemsDesktopSmall : [767, 1], // betweem 900px and 601px
+        itemsTablet: [700, 1], //2 items between 600 and 0
+        itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
+        navigation : true,
+        pagination :  false
+      }); 
+     }); 
+    </script>
 </body>
 </html>
