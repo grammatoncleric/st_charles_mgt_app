@@ -2,16 +2,28 @@
     <!--==============================
                 Stuck menu
     =================================-->
+    <h1 class="logo"></h1>
     <div class="container_12">
         <div class="grid_12">          
           <div class="navigation">
             <nav>
               <ul class="sf-menu">
-               <li class="current"><a href="index.html">Home</a></li>
-               <li><a href="about.html">About</a></li>
-               <li><a href="mission.html">Mission</a></li>
-               <li><a href="membership.html">Membership</a></li>
-               <li><a href="contacts.html">Contacts</a></li>
+               <li {% if '/' == request.path %}
+                  class="current"
+                  {% else %}
+                  class=""
+                  {% endif %}
+               ><a href="{% url 'index' %}">Home</a></li>
+               <li
+               {% if 'about' in request.path %}
+                  class="current"
+                  {% else %}
+                  class=""
+                  {% endif %}
+               ><a href="{% url 'about' %}">Mass Booking</a></li>
+               <li><a href="mission.html">Infant Baptism</a></li>
+               <li><a href="mission.html">Become a Member</a></li>
+               <li><a href="contacts.html">Enquiries</a></li>
              </ul>
             </nav>
             <div class="clear"></div>
@@ -24,8 +36,8 @@
 </header>
 <section class="slider_wrapper">
   <div id="camera_wrap" class="">
-    <div data-src="images/slide.jpg"></div>
-    <div data-src="images/slide1.jpg"></div>
-    <div data-src="images/slide2.jpg"></div>  
+   <div data-src="{% static 'img/slide.jpg' %}"></div>
+    <div data-src="{% static 'img/slide1.jpg' %}"></div>
+    <div data-src="{% static 'img/slide2.jpg'' %}"></div>  
   </div>  
 </section> 

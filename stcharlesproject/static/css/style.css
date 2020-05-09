@@ -1,12 +1,6 @@
 @import '../css/grid.css';
 @import '../css/font-awesome.css';
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:700);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic);
-@import url(//fonts.googleapis.com/css?family=Economica);
-@import url(//fonts.googleapis.com/css?family=Marvel:400);
-@import url(//fonts.googleapis.com/css?family=Marvel:700);
+
 .navigation {
   z-index: 999;
   position: relative;
@@ -18,7 +12,10 @@
   z-index: 990;
   text-align: center;
   position: relative;
+
 }
+
+
 .navigation nav {
   position: relative;
   padding: 0;
@@ -40,7 +37,7 @@
   display: inline-block;
   font-weight: 300;
   position: relative;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 52px;
 }
 .sf-menu > li + li {
@@ -372,7 +369,7 @@ h1 {
   text-transform: uppercase;
   color: #ffffff;
   z-index: 999;
-  font-size: 60px;
+  font-size: 40px;
   line-height: 52px;
   margin-bottom: 8px;
   padding: 26px 0 45px;

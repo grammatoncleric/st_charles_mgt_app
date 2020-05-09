@@ -1,0 +1,11 @@
+#Postgres
+   postgres:
+      environment:
+        POSTGRES_USER: sally
+        POSTGRES_PASSWORD: qwerty
+        POSTGRES_DB: dbserver
+        POSTGRES_HOST: postgres
+      container_name: postgres
+      image: postgres
+      ports:
+        - 192.168.99.100:5432

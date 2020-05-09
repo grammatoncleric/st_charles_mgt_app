@@ -1,0 +1,14 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+  <h1 id="head">
+    <img src="{% static 'img/stcharles1004.jpg' %}" alt="St.Charles Borromeo, 1004" 
+    style="width: 7%;max-height: 7%" class="brand_img" />
+     <!--<img src="{% static 'img/logo.png' %}" alt="St.Charles Borromeo, 1004" height="50"
+     width="80" class="brand_img">--> St.Charles Borromeo, 1004 Admin
+  </h1>
+{% endblock %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}

@@ -1,60 +1,64 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <!--=====================
           Content
 ======================-->
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September22, 2014!</div>
+<section id="content"><div class="ic"></div>
+<article class="carousel_wrapper">
     <div class="container_12">
       <div class="grid_4">
         <div class="banner">
-          <a href="#" class="banner_title">Live <br>
-  Events</a>
-          <div class="maxheight"><img src="images/icon1.png" alt=""></div>
-        </div>
+          <a href="#" class="banner_title">Church Event <br>
+  Schedule</a>
+          <div class="maxheight"><img src="{% static 'img/icon1.png' %}" alt="" ></div>
       </div>
+    </div>
       <div class="grid_4">
         <div class="banner">
           <a href="#" class="banner_title">Biblical <br>
   Counseling</a>
-          <div class="maxheight"><img src="images/icon2.png" alt=""></div>
+          <div class="maxheight"><img src="{% static 'img/icon2.png' %}" alt=""></div>
         </div>
       </div>
       <div class="grid_4">
         <div class="banner">
-          <a href="#" class="banner_title">Helping <br>
-  Children</a>
-          <div class="maxheight"><img src="images/icon3.png" alt=""></div>
+          <a href="#" class="banner_title">Children's <br>
+            Catechism</a>
+          <div class="maxheight"><img src="{% static 'img/icon3.png' %}" alt=""></div>
         </div>
       </div>
       <div class="clear"></div>
     </div>
+</article>
     <article class="block-1">
       <div class="container_12">
         <div class="grid_12">
-          <h2>Meet Our Pastors Who Share God’s Love</h2>
+          <h2>Meet Our Beloved Reverends</h2>
         </div>
         <div class="grid_4">
-          <img src="images/page1_img1.jpg" alt="">
+          <img src="{% static 'img/page1_img1.jpg' %}" alt="">
           <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#">Mark Johnson</a></div>
+            <div class="block-1_title"><a href="#">Rev. Michael Da Archangel</a></div>
             Lorem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit... 
           </div>
         </div>
         <div class="grid_4">
-          <img src="images/page1_img2.jpg" alt="">
+          <img src="{% static 'img/page1_img2.jpg' %}" alt="">
           <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#">Sam Rock</a></div>
+            <div class="block-1_title"><a href="#">Rev. Alexander Da Great</a></div>
             Korem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sito... 
           </div>
   
         </div>
-        <div class="grid_4">
-          <img src="images/page1_img3.jpg" alt="">
+       <div class="grid_4">
+          <img src="" alt="">
           <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#">Patrick Pool</a></div>
-            Forem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisu... 
+            <div class="block-1_title"><a href="#"></a></div>
+            
           </div>
         </div>
         <div class="clear"></div>
@@ -63,28 +67,28 @@
     <div class="container_12">
       <div class="grid_6">
         <div class="block-2">
-          <img src="images/b_icon1.png" alt="">
+          <img src="{% static 'img/b_icon1.png' %}" alt="">
           <div class="text1"><a href="#">I’m New Here</a></div>
           Amus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreeto 
         </div>
       </div>
       <div class="grid_6">
         <div class="block-2">
-          <img src="images/b_icon2.png" alt="">
+          <img src="{% static 'img/b_icon2.png' %}" alt="">
           <div class="text1"><a href="#">Care Ministries</a></div>
           Rmus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreet 
         </div>
       </div>
       <div class="grid_6">
         <div class="block-2">
-          <img src="images/b_icon3.png" alt="">
+          <img src="{% static 'img/b_icon3.png' %}" alt="">
           <div class="text1"><a href="#">Prayer Request</a></div>
           Hemus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreeti 
         </div>
       </div>
       <div class="grid_6">
         <div class="block-2">
-          <img src="images/b_icon4.png" alt="">
+          <img src="{% static 'img/b_icon4.png' %}" alt="">
           <div class="text1"><a href="#">Audio Podcasts</a></div>
           Emus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoree 
         </div>
