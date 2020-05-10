@@ -254,7 +254,7 @@ span.lab {
 
 
 
-@media only screen and (max-width: 979px) {
+@media screen and (max-width: 979px) {
 
 #form label {
 	float: none !important;	
@@ -295,7 +295,7 @@ span.lab {
 
 }
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
 
 #form {
 	padding-top: 40px;
@@ -320,7 +320,7 @@ span.lab {
  }
   
 }
-@media only screen and (max-width: 479px) {
+@media screen and (max-width: 479px) {
 
   #form textarea {
 		height: 200px !important;  

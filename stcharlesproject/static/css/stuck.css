@@ -6,7 +6,7 @@
   transition: all 0.4s ease;
   z-index: 999;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
-  background: url(../images/stuck_overlay.png) 0 0 repeat;
+  background: url(../img/stuck_overlay.png) 0 0 repeat;
 }
 #stuck_container .isStuck {
   background-color: #fff;
@@ -24,7 +24,7 @@
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-@media only screen and (max-width: 979px) {
+@media screen and (max-width: 979px) {
   #stuck_container {
     position: relative !important;
     box-shadow: none;

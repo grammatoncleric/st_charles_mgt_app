@@ -170,7 +170,7 @@ nav {
 /*==================================RESPONSIVE LAYOUTS===============================================*/
 
 
-@media only screen and (max-width: 995px) {
+@media screen and (max-width: 995px) {
 
 		.sf-menu>li>a {
 
@@ -183,7 +183,7 @@ nav {
 		}
 }
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
 	.navigation {
 		float: none !important;
 		padding: 0px 0px 20px !important;

@@ -2,7 +2,7 @@
     <!--==============================
                 Stuck menu
     =================================-->
-    <h1 class="logo"></h1>
+    <!--<h1 class="logo"></h1>-->
     <div class="container_12">
         <div class="grid_12">          
           <div class="navigation">
@@ -15,13 +15,19 @@
                   {% endif %}
                ><a href="{% url 'index' %}">Home</a></li>
                <li
-               {% if 'about' in request.path %}
+               {% if 'booking' in request.path %}
                   class="current"
                   {% else %}
                   class=""
                   {% endif %}
                ><a href="{% url 'about' %}">Mass Booking</a></li>
-               <li><a href="mission.html">Infant Baptism</a></li>
+               <li
+               {% if 'baptism' in request.path %}
+               class="current"
+               {% else %}
+               class=""
+               {% endif %}
+               ><a href="mission.html">Infant Baptism</a></li>
                <li><a href="mission.html">Become a Member</a></li>
                <li><a href="contacts.html">Enquiries</a></li>
              </ul>
@@ -34,10 +40,3 @@
     </div> 
   </section>
 </header>
-<section class="slider_wrapper">
-  <div id="camera_wrap" class="">
-   <div data-src="{% static 'img/slide.jpg' %}"></div>
-    <div data-src="{% static 'img/slide1.jpg' %}"></div>
-    <div data-src="{% static 'img/slide2.jpg'' %}"></div>  
-  </div>  
-</section> 
