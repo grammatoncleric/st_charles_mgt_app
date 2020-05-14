@@ -15,21 +15,33 @@
                   {% endif %}
                ><a href="{% url 'index' %}">Home</a></li>
                <li
-               {% if 'booking' in request.path %}
+               {% if 'bookmass' in request.path %}
                   class="current"
                   {% else %}
                   class=""
                   {% endif %}
-               ><a href="{% url 'about' %}">Mass Booking</a></li>
+               ><a href="{% url 'bookmass' %}">Mass Booking</a></li>
                <li
                {% if 'baptism' in request.path %}
                class="current"
                {% else %}
                class=""
                {% endif %}
-               ><a href="mission.html">Infant Baptism</a></li>
-               <li><a href="mission.html">Become a Member</a></li>
-               <li><a href="contacts.html">Enquiries</a></li>
+               ><a href="{% url 'baptism' %}">Infant Baptism</a></li>
+               <li
+               {% if 'member' in request.path %}
+               class="current"
+               {% else %}
+               class=""
+               {% endif %}
+               ><a href="{% url 'member' %}">Become a Member</a></li>
+               <li
+               {% if 'enquiry' in request.path %}
+               class="current"
+               {% else %}
+               class=""
+               {% endif %}
+               ><a href="{% url 'enquiry' %}">Enquiries</a></li>
              </ul>
             </nav>
             <div class="clear"></div>

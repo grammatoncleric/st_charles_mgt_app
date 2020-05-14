@@ -12,6 +12,27 @@
         </div>-->
         
           <ul class="sf-menu">
+            {% if user.is_authenticated %}
+  
+                <li
+                {% if 'dashboard' in request.path %}
+                class="current"
+                {% else %}
+                class=""
+                {% endif %}
+                ><a href="{% url 'dashboard' %}">Welcome, {{ user.first_name }} (DashBoard)</a></li>
+
+                <li>
+                <a href="javascript:{document.getElementById('logout').submit()}">
+                <i></i> Logout
+                </a>
+                <form action="{% url 'logout' %}" method="POST" id="logout">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+                </li>
+        
+            {% else %}
             <li
             {% if 'login' in request.path %}
             class="current"
@@ -26,6 +47,7 @@
             class=""
             {% endif %}
             ><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
           </ul>
        
           

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 <!--=====================
           Content
@@ -7,13 +9,26 @@
 <section id="register" class="bg-light py-5">
     <div class="container">
       <div class="row">
+        <div class="grid_4">
+          <div class="banner-2"><img src="{% static 'img/page4_img5.jpg' %}" alt="" style="width: 100%;max-height: 100%">
+            <div class="banner-2_bot">
+              <div class="banner-2_title">
+                Join Us!
+              </div>
+              <p>Register with St. Charles Borromeo Parish, 1004</p>
+              <p>Register and join an association in the church</p>
+            </div>
+          </div>
+        </div>
         <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header bg-primary text-white">
               <h4>
-                <i class="fas fa-user-plus"></i> Register</h4>
+                <i class="fas fa-user-plus"></i> Member Registration </h4>
             </div>
             <div class="card-body">
+                       <!--Alerts-->
+                       {% include 'partials/_alerts.html' %}
                 <form action="{% url 'register' %}" method="POST">
                     {% csrf_token %}
                   <div class="form-group">
@@ -45,6 +60,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
