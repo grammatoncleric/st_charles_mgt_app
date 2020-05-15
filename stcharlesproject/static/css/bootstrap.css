@@ -236,7 +236,7 @@ button::-moz-focus-inner,
 input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
-  padding: 0; }
+  padding: 3; }
 
 input[type="date"],
 input[type="time"],

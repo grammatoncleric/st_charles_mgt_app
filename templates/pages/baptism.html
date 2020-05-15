@@ -9,57 +9,160 @@
 <section id="register" class="bg-light py-5">
     <div class="container">
       <div class="row">
-        <div class="grid_4">
+        <div class="col-md-4 mx-auto">
           <div class="banner-2"><img src="{% static 'img/page4_img5.jpg' %}" alt="" style="width: 100%;max-height: 100%">
             <div class="banner-2_bot">
               <div class="banner-2_title">
                 Register For Baptism!
               </div>
-              <p>For adult baptism and for your children's baptism, </p>
+              <p>For your children's baptism and adult baptism, </p>
               <p>please register here.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="fas fa-user-plus"></i> Baptism Registration </h4>
-            </div>
-            <div class="card-body">
-                       <!--Alerts-->
-                       {% include 'partials/_alerts.html' %}
-                       <form action="{% url 'enquiry' %}" method="POST">
-                        {% csrf_token %} 
-                        {% if user.is_authenticated %}
-                            <input type="hidden" name="user_id" value="{{ user.id }}">
-                        {% else %}
-                            <input type="hidden" name="user_id" value="0"> 
-                        {% endif %}
-                       <div class="form-group">
-                         <label for="name" class="col-form-label">Name:</label>
-                         <input type="text" name="name" class="form-control" 
-                         {% if user.is_authenticated %} value="{{ user.last_name }} {{ user.first_name }}" {%endif %} required>
-                       </div>
-                       <div class="form-group">
-                         <label for="email" class="col-form-label">Email:</label>
-                         <input type="email" name="email" class="form-control" 
-                         {% if user.is_authenticated %} value="{{ user.email }}" {%endif %} required>
-                       </div>
-                       <div class="form-group">
-                         <label for="phone" class="col-form-label">Phone:</label>
-                         <input type="text" name="phone" class="form-control">
-                       </div>
-                       <div class="form-group">
-                         <label for="message" class="col-form-label">Message:</label>
-                         <textarea name="message" class="form-control"></textarea>
-                       </div>
-                       <hr>
-                       <input type="submit" value="Send" class="btn btn-block btn-secondary">
-                     </form>
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h4>
+                  <i class="fas fa-user-plus"></i> Baptism Registration </h4>
+              </div>
+              <div class="card-body">
+                         <!--Alerts-->
+                         {% include 'partials/_alerts.html' %}
+                        
+  
+                       <form action="{% url 'bookmass' %}" method="POST">
+  
+                          {% csrf_token %} 
+                          {% if user.is_authenticated %}
+                              <input type="hidden" name="user_id" value="{{ user.id }}">
+                              <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the baptism registration form. </b> </label>                        
+                          {% else %}
+                              <input type="hidden" name="user_id" value="0"> 
+                          {% endif %}
+                          <br/><br/>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="inputEmail4">Baptism Firstname</label>
+                              <input type="email" class="form-control" id="inputEmail" placeholder="Firstname">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label for="inputPassword4">Baptism Middlename</label>
+                              <input type="mobile" class="form-control" id="inputMobileNo" placeholder="Middlename">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Baptism Lastname</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Lastname">
+                              </div>
+                          </div>                         
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputStartDate">Date of Birth</label>
+                                <input type="email" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD">
+                              </div>
+                              <div class="form-group col-md-5">
+                                <label for="inputEndDate">Place of Birth</label>
+                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Place of Birth">
+                              </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputStartDate">Hometown</label>
+                                  <input type="email" class="form-control" id="inputStartDate" placeholder="Hometown">
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label for="inputEndDate">State of Origin</label>
+                                  <input type="mobile" class="form-control" id="inputEndDate" placeholder="State of Origin">
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputStartDate">Contact Number (in case of adult baptism)</label>
+                                  <input type="email" class="form-control" id="inputStartDate" placeholder="Mobile No">
+                                </div>
+
+                              </div>
+                              <b>Parents' Details</b><br/><br/>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputStartDate">Father</label>
+                                  <input type="email" class="form-control" id="inputStartDate" placeholder="Fullname">
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label for="inputEndDate">Phone No</label>
+                                  <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputListNames">Address</label>
+                                <input type="text" class="form-control" id="inputListNames" placeholder="Address">
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputStartDate">Mother</label>
+                                  <input type="email" class="form-control" id="inputStartDate" placeholder="Fullname">
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label for="inputEndDate">Phone No</label>
+                                  <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputListNames">Address</label>
+                                <input type="text" class="form-control" id="inputListNames" placeholder="Address">
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputStartDate">Marital Status</label>
+                                  <select class="form-control">
+                                    <option>--Select--</option>
+                                    <option>Married</option>
+                                    <option>Seperated</option>
+                                    <option>Divorced</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <b>God-Parents' Details [God-parents must be practicing Catholics]</b><br/><br/>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputStartDate">God-Father</label>
+                                <input type="email" class="form-control" id="inputStartDate" placeholder="Fullname">
+                              </div>
+                              <div class="form-group col-md-5">
+                                <label for="inputEndDate">Phone No</label>
+                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputListNames">Address</label>
+                              <input type="text" class="form-control" id="inputListNames" placeholder="Address">
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputStartDate">God-Mother</label>
+                                <input type="email" class="form-control" id="inputStartDate" placeholder="Fullname">
+                              </div>
+                              <div class="form-group col-md-5">
+                                <label for="inputEndDate">Phone No</label>
+                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputListNames">Address</label>
+                              <input type="text" class="form-control" id="inputListNames" placeholder="Address">
+                            </div>
+                          <br/>
+                          <div class="form-group">
+                              <label for="exampleFormControlFile1">Upload Digital Signature (.jpg, .jpeg, .pdf, .png)</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                          </div>
+                          <br/>
+                            
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+              </div>
             </div>
           </div>
-        </div>
 
       </div>
     </div>

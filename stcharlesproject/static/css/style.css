@@ -154,12 +154,6 @@ address {
 p {
   margin-bottom: 24px;
 }
-input,
-textarea {
-  border-radius: 0 !important;
-  outline: none !important;
-  -webkit-appearance: none;
-}
 img {
   max-width: 100%;
 }
