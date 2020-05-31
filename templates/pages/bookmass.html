@@ -23,22 +23,33 @@
           <div class="card">
             <div class="card-header bg-primary text-white">
               <h4>
-                <i class="fas fa-user-plus"></i> Book For Mass </h4>
+                <i class="fas fa-user-plus"></i>Mass Booking</h4>
             </div>
             <div class="card-body">
                        <!--Alerts-->
                        {% include 'partials/_alerts.html' %}
                       
+                       <script>
+                         function getLoc(){
+                         var fav = [];
+                              $.each($("input[name='intention_category']:checked"), function(){            
+                                  fav.push($(this).val());
+                                  
+                              });
+                            return fav;
+                         }
+                       </script>
 
-                     <form action="{% url 'bookmass' %}" method="POST">
+                     <form action="{% url 'bookmass' %}" method="POST" enctype="multipart/form-data">
 
                         {% csrf_token %} 
                         {% if user.is_authenticated %}
-                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                           
                             <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the mass booking form. </b> </label>                        
                         {% else %}
                             <input type="hidden" name="user_id" value="0"> 
                         {% endif %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
                         <br/><br/>
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -46,30 +57,34 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <input class="form-check-input" type="radio" name="bookmass_time" id="inlineRadio1" value="6:00AM">
                                     <label class="form-check-label" for="inlineRadio1">6:30 AM</label>
                                   </div>                            
                             </div>
                             <div class="form-group col-md-4">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <input class="form-check-input" type="radio" name="bookmass_time" id="inlineRadio2" value="12 NOON">
                                     <label class="form-check-label" for="inlineRadio2">12 NOON</label>
                                 </div>   
                             </div>
                           </div>
                         <div class="form-row">
-                          <div class="form-group col-md-7">
-                            <label for="inputEmail4">Name of Individual/Society</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Name">
+                          <div class="form-group col-md-6">
+                            <label for="inputtext4">Name of Individual/Society</label>
+                            <input type="text" class="form-control" id="inputtext" placeholder="Name" name="fullname" required>
                           </div>
-                          <div class="form-group col-md-5">
+                          <div class="form-group col-md-6">
                             <label for="inputPassword4">Mobile No</label>
-                            <input type="mobile" class="form-control" id="inputMobileNo" placeholder="Mobile No">
+                            <input type="mobile" class="form-control" id="inputMobileNo" placeholder="Mobile No" name="mobile_no" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputListNames">List Name[s] of who you wish to pray for</label>
-                          <input type="text" class="form-control" id="inputListNames" placeholder="List Name[s]">
+                          <input type="text" class="form-control" id="inputListNames" placeholder="List Name[s]" name="names_to_pray_for" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputListNames">Write your Intention(s)</label>
+                          <input type="text" class="form-control" id="inputListNames" placeholder="List Name[s]" name="intention" required>
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
@@ -77,57 +92,77 @@
                           </div>
                           <div class="form-group col-md-6">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <input class="form-check-input" type="checkbox" name="intention_category" id="inlineCheckbox1" value="Birthday/Thanksgiving">
                                 <label class="form-check-label" for="inlineCheckbox1">Birthday/Thanksgiving</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <input class="form-check-input" type="checkbox" name="intention_category" id="inlineCheckbox2" value="Special/Private Intention">
                                 <label class="form-check-label" for="inlineCheckbox2">Special/Private Intention</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2">
+                                <input class="form-check-input" type="checkbox" name="intention_category" id="inlineCheckbox3" value="Repose of Faithful Departed">
                                 <label class="form-check-label" for="inlineCheckbox3">Repose of Faithful Departed</label>
                               </div>
                           </div>
+                          <input type="hidden" name="intention_category_main" value="getLoc()">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="inputStartDate">Intention Start Date</label>
-                              <input type="email" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD">
+                              <input type="text" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD" name="intention_start_date" required>
                             </div>
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-6">
                               <label for="inputEndDate">Intention End Date</label>
-                              <input type="mobile" class="form-control" id="inputEndDate" placeholder="YYYY-MM-DD">
+                              <input type="mobile" class="form-control" id="inputEndDate" placeholder="YYYY-MM-DD" name="intention_end_date" required>
                             </div>
                           </div>
                           <div class="form-group">
                             <label for="inputEndDate">Amount Paid</label>
-                            <input type="mobile" class="form-control" id="inputEndDate" placeholder="Amount">
+                            <input type="mobile" class="form-control" id="inputEndDate" placeholder="Amount" name="amount_paid" required><br>
                             <b>Please pay Mass stipend to the account below and upload your payment receipt below to enable us to update our record.
 
                             Account Name:	St. Charles Borromeo Catholic Church
                             Account Number:	1011176597
-                            Bank:			Zenith Bank</b>
+                            Bank:			Zenith Bank</br>
                             
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Upload Payment Evidence (.jpg, .jpeg, .pdf, .png)</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo_pay_evidence" required>
                         </div>
 
-                        <b>I/WE WISH TO HAVE OPEN THANKSGIVING</b><br/>
+                        <br>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="labelmt"><b>HAVE OPEN THANKSGIVING?</b></label>
+                          </div>
+                          <div class="form-group col-md-3">
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="have_open_thanksgiving " id="have_open_thanksgiving " value="1" required>
+                                  <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                </div>                            
+                          </div>
+                          <div class="form-group col-md-3">
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="have_open_thanksgiving " id="have_open_thanksgiving " value="0" required>
+                                  <label class="form-check-label" for="inlineRadio2" selected>No</label>
+                              </div>   
+                          </div>
+                        </div>
+                        <br/>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="thanksgiving_day" id="inlineRadioDay" value="Weekday">
                             <label class="form-check-label" for="inlineRadio1">Weekday</label><br/>
                           </div>   
                         <div class="form-row">
                             <div class="form-group col-md-8">
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="thanksgiving_time" id="inlineRadioTime" value="6:30 AM">
                                 <label class="form-check-label" for="inlineRadio1">6:30 AM</label>
                               </div>   
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="thanksgiving_time" id="inlineRadioTime" value="12 NOON">
                                 <label class="form-check-label" for="inlineRadio1">12 NOON</label>
                               </div>   
                             </div>
@@ -137,26 +172,26 @@
                           </div>
 
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="thanksgiving_day" id="inlineRadioDay" value="Sunday">
                             <label class="form-check-label" for="inlineRadio1">Sunday</label><br/>
                           </div>   
                         <div class="form-row">
                             <div class="form-group col-md-8">
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="thanksgiving_time" id="inlineRadioTime" value="7:30 AM">
                                 <label class="form-check-label" for="inlineRadio1">7:30 AM</label>
                               </div>   
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">10:00AM</label>
+                                <input class="form-check-input" type="radio" name="thanksgiving_time" id="inlineRadioTime" value="10:00 AM">
+                                <label class="form-check-label" for="inlineRadio1">10:00 AM</label>
                               </div>   
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">6:30PM</label>
+                                <input class="form-check-input" type="radio" name="thanksgiving_time" id="inlineRadioTime" value="6:30 PM">
+                                <label class="form-check-label" for="inlineRadio1">6:30 PM</label>
                               </div> 
                             </div>
                             <div class="form-group col-md-4">
-                              <input type="mobile" class="form-control" id="inputEndDate" placeholder="YYYY-MM-DD">
+                              <input type="mobile" class="form-control" id="inputEndDate" placeholder="YYYY-MM-DD" name="thanksgiving_dayTime" required>
                             </div>
                           </div>
 

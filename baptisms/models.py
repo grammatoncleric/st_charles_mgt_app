@@ -24,7 +24,7 @@ class Baptism(models.Model):
         god_mothers_name = models.CharField(max_length=50)
         god_mothers_mobile_no = models.CharField(max_length=50)
         god_mothers_address = models.TextField(blank=True)
-        digital_signature = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+        digital_signature = models.ImageField(upload_to='baptism/photos/%Y/%m/%d/', blank=True)
         create_date = models.DateTimeField(default=datetime.now, blank=True)
 
         def __str__(self):
