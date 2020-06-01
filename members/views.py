@@ -25,7 +25,10 @@ def member(request):
         when_you_start_worship=request.POST['when_you_start_worship']
         belong_to_association=request.POST['belong_to_association']
         association_names=request.POST['association_names']
-        user_id=request.POST['user_id']
+        if not request.user.is_authenticated:
+          user_id=0
+        else:
+          user_id=request.POST['user_id']
 
         #check if user has already registered
         is_registered = Member.objects.all().filter(first_name=first_name, last_name=last_name)

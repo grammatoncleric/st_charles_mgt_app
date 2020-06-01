@@ -5,7 +5,7 @@ from pages import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-     path('about', views.about, name='about'),
-     path('print', views.print, name='print'),
+    path('about', views.about, name='about'),
+    path('<int:id>', views.print_baptism, name='print_baptism'),
 
 ]

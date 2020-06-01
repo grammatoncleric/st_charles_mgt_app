@@ -5,25 +5,9 @@
 {% block content %}
 <div class="card">
     <div class="card-body">
-
-        
-          <!-- Breadcrumb -->
-          <section id="bc" class="mt-3">
-            <div class="container">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="index.html">
-                      <i class="fas fa-home"></i> Home</a>
-                  </li>
-                  <li class="breadcrumb-item active"> Dashboard</li>
-                </ol>
-              </nav>
-            </div>
-          </section>
-        
             <!-- Alerts -->
             {% include 'partials/_alerts.html' %}
+        
             <form action="" method="POST">
                 {% csrf_token %} 
                 {% if user.is_authenticated %}
@@ -32,46 +16,122 @@
                     <input type="hidden" name="user_id" value="0"> 
                 {% endif %}
             </form>
-          <section id="dashboard" class="py-4">
+
             <div class="container">
               <div class="row">
-                <div class="col-md-12">
-                  <h2>Welcome {{ user.first_name }}</h2>
-               
-                  <p>Here are the property listings that you have inquired about</p>
+                <div class="col-md-12">  
+                  <h2>Hello {{ user.first_name }}, </h2> 
+                  <h2>Mass Booking History</h2>  
+                  <p>Here are a list of mass booking history you have done on this platform: </p> 
+                 {% if bookmasses %}   
+
                   <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Property</th>
+                        <th scope="col"><b>#</b></th>
+                        <th scope="col"><b>Name of Individual</b></th>
+                        <th scope="col"><b>Mass Intention</b></th>
+                        <th scope="col"><b>Booking Start Date</b></th>
+                        <th scope="col"><b>Booking End Date</b></th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-               
+                  {% for bookmass in bookmasses %}
                       <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{ bookmass.id }}</td>
+                        <td>{{ bookmass.fullname }}</td>
+                        <td>{{ bookmass.intention }}</td>
+                        <td>{{ bookmass.intention_start_date }}</td>
+                        <td>{{ bookmass.intention_end_date }}</td>
                         <td>
-                          <a class="btn btn-light" href="">View Listing</a>
+                          <a class="btn btn-light" href="">View</a>
                         </td>
                       </tr>
-                            
+                  {% endfor %}              
                     </tbody>
                   </table>
-                
-                  <p>You have not made any inquiries</p>
+                  {% else %}
+                  <p>You have not made any mass bookings</p>
+                  {% endif %}
+
+                  <hr>
+                  <h2>Baptism Registration History</h2>  
+                  <p>Here are a list of your children's baptism history you have done on this platform:</p>
+                {% if baptisms %}
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col"><b>#</b></th>
+                        <th scope="col"><b>Baptism FName</b></th>
+                        <th scope="col"><b>Baptism MName</b></th>
+                        <th scope="col"><b>Baptism LName</b></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  {% for baptism in baptisms %}
+                      <tr>
+                        <td>{{ baptism.id }}</td>
+                        <td>{{ baptism.bap_first_name }}</td>
+                        <td>{{ baptism.bap_middle_name }}</td>
+                        <td>{{ baptism.bap_last_name }}</td>
+                        <td>
+                          <a class="btn btn-light" href="{% url 'print_baptism' baptism.id %}">Print</a>
+                        </td>
+                      </tr>
+                  {% endfor %}              
+                    </tbody>
+                  </table>
+                  {% else %}
+                  <p>You have not made any baptism registration.</p>
+                  {% endif %}
+
+                  <hr>
+
+                  <h2>Membership Profile</h2>  
+                  <p>View your St Charles Borromeo Parish membership details below :</p>
+                {% if members %}
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col"><b>#</b></th>
+                        <th scope="col"><b>First Name</b></th>
+                        <th scope="col"><b>Last Name</b></th>
+                        <th scope="col"><b>Email</b></th>
+                        <th scope="col"><b>Mobile</b></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  {% for member in members %}
+                      <tr>
+                        <td>{{ member.id }}</td>
+                        <td>{{ member.first_name }}</td>
+                        <td>{{ member.last_name }}</td>
+                        <td>{{ member.email }}</td>
+                        <td>{{ member.mobile_no }}</td>
+                        <td>
+                          <a class="btn btn-light" href="">View</a>
+                        </td>
+                      </tr>
+                  {% endfor %}              
+                    </tbody>
+                  </table>
+                  {% else %}
+                  <p>You do not have a membership profile with St Charles. Please fill the membership form <a href ="{% url 'member' %}">here</a>.</p>
+                  {% endif %}
+        
         
                 </div>
               </div>
             </div>
-          </section>
+
 
     </div>
 
 </div>
-
-
-
 
 {% endblock %}

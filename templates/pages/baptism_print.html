@@ -4,67 +4,71 @@
 
 {% block content %}
 
+
+
 <!-- Begin text definitions (Positioned/styled in CSS) -->
 <div id="t1_1" class="t s1_1"><h3>ST. CHARLES BORROMEO CATHOLIC CHURCH</h3></div>
 <div id="t2_1" class="t s2_1"></h3>1004 Estate, Victoria Island, Lagos, Nigeria</h3></div>
 <div id="t3_1" class="t s3_1">Tel:</div>
 <div id="t4_1" class="t s4_1">0909 685 4458</div>
 <div id="t5_1" class="t s3_1">Reg. No __________</div>
-<div id="t6_1" class="t s5_1"><b>Baptism Registration Form</b></div>
+<div id="t6_1" class="t s5_1"><i><b><u>Baptism Registration Form</u></b></i></div>
 <div id="t7_1" class="t s6_1"></div>
 <div id="t8_1" class="t s5_1">Name:</div>
-<div id="t9_1" class="t s2_1"><i><b>AUGUSTINE     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OKEY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OKORE</b></i></div>
-<div id="ta_1" class="t s7_1">Baptism Name</div>
+<div id="t9_1" class="t s2_1"><i><i><b>{{ baptism.bap_first_name }}     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ baptism.bap_middle_name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ baptism.bap_last_name }}</b></i></i></div>
+<!--<div id="ta_1" class="t s7_1">Baptism Name</div>
 <div id="tb_1" class="t s7_1">Middle Name</div>
-<div id="tc_1" class="t s7_1">Surname</div>
+<div id="tc_1" class="t s7_1">Surname</div>-->
 <div id="td_1" class="t s6_1"></div>
 <div id="te_1" class="t s5_1">Date of Birth:</div>
-<div id="tf_1" class="t s2_1"><i><b>31/10/2020</b></i></div>
+<div id="tf_1" class="t s2_1"><i><i><b>{{ baptism.date_of_birth }}</b></i></i></div>
 <div id="tg_1" class="t s6_1"></div>
 <div id="th_1" class="t s5_1">Place of Birth:</div>
-<div id="ti_1" class="t s2_1">______________________________________________________________</div>
+<div id="ti_1" class="t s2_1"><i><b>{{baptism.place_of_birth }}</b></i></div>
 <div id="tj_1" class="t s8_1"></div>
-<div id="tk_1" class="t s5_1">Home Town: _______________________________________________________________</div>
+<div id="tk_1" class="t s5_1">Home Town: <i><b>{{baptism.home_town }}</b></i></div>
 <div id="tl_1" class="t s8_1"></div>
-<div id="tm_1" class="t s5_1">State of Origin: ____________________________________________________________</div>
+<div id="tm_1" class="t s5_1">State of Origin: <i><b>{{baptism.state_origin }}</b></i></div>
 <div id="tn_1" class="t s8_1"></div>
-<div id="to_1" class="t s5_1">Contact Number [in the case of adult baptism]: __________________________________</div>
+<div id="to_1" class="t s5_1">Contact Number [in the case of adult baptism]: <i><b>{{baptism.adult_mobile_no }}</b></i></div>
 <div id="tp_1" class="t s8_1"></div>
 <div id="tq_1" class="t s5_1">Parents’ Detail:</div>
 <div id="tr_1" class="t s5_1">Father:</div>
-<div id="ts_1" class="t s2_1">__________________________________ </div>
+<div id="ts_1" class="t s2_1"><i><b>{{baptism.fathers_name }}</b></i></div>
 <div id="tt_1" class="t s5_1">Mobile Number:</div>
-<div id="tu_1" class="t s2_1">___________________</div>
+<div id="tu_1" class="t s2_1"><i><b>{{baptism.fathers_mobile_no }}</b></i></div>
 <div id="tv_1" class="t s5_1">Address:</div>
-<div id="tw_1" class="t s2_1">__________________________________________________________________</div>
+<div id="tw_1" class="t s2_1"><i><b>{{baptism.parents_address }}</b></i></div>
 <div id="tx_1" class="t s5_1">Mother:</div>
-<div id="ty_1" class="t s2_1">_________________________________ </div>
+<div id="ty_1" class="t s2_1"><i><b>{{baptism.mothers_name }}</b></i> </div>
 <div id="tz_1" class="t s5_1">Mobile Number:</div>
-<div id="t10_1" class="t s2_1">___________________</div>
+<div id="t10_1" class="t s2_1"><i><b>{{baptism.mothers_mobile_no }}</b></i></div>
 <div id="t11_1" class="t s5_1">Address:</div>
-<div id="t12_1" class="t s2_1">__________________________________________________________________</div>
+<div id="t12_1" class="t s2_1"><i><b>{{baptism.parents_address }}</b></i></div>
 <div id="t13_1" class="t s6_1"></div>
 <div id="t14_1" class="t s5_1">Marital Status: </div>
-<div id="t15_1" class="t s2_1">_____________________________________________________________</div>
+<div id="t15_1" class="t s2_1"><i><b>{{baptism.parents_marital_status }}</b></i></div>
 <div id="t16_1" class="t s6_1"></div>
 <div id="t17_1" class="t s5_1">Parish of Wedding of Parents:_</div>
-<div id="t18_1" class="t s2_1">________________________________________________</div>
+<div id="t18_1" class="t s2_1"><i><b>{{baptism.parents_marriage_parish }}</b></i></div>
 <div id="t19_1" class="t s8_1"></div>
 <div id="t1a_1" class="t s5_1">God-parents Detail: [Note: Godparents MUST be Practicing Catholics]</div>
 <div id="t1b_1" class="t s5_1">God-Father:</div>
-<div id="t1c_1" class="t s2_1">____________________________________</div>
+<div id="t1c_1" class="t s2_1"><i><b>{{baptism.god_fathers_name }}</b></i></div>
 <div id="t1d_1" class="t s5_1">Mobile Number</div>
-<div id="t1e_1" class="t s2_1">_____________</div>
+<div id="t1e_1" class="t s2_1"><i><b>{{baptism.god_fathers_mobile_no }}</b></i></div>
 <div id="t1f_1" class="t s5_1">Address:</div>
-<div id="t1g_1" class="t s2_1">___________________________________________________________________</div>
+<div id="t1g_1" class="t s2_1"><i><b>{{baptism.god_fathers_address }}</b></i></div>
 <div id="t1h_1" class="t s5_1">God-Mother: </div>
-<div id="t1i_1" class="t s2_1">____________________________________</div>
+<div id="t1i_1" class="t s2_1"><i><b>{{baptism.god_mothers_name }}</b></i></div>
 <div id="t1j_1" class="t s5_1">Mobile Number</div>
-<div id="t1k_1" class="t s2_1">____________</div>
+<div id="t1k_1" class="t s2_1"><i><b>{{baptism.god_mothers_mobile_no }}</b></i></div>
 <div id="t1l_1" class="t s5_1">Address:</div>
-<div id="t1m_1" class="t s2_1">___________________________________________________________________</div>
+<div id="t1m_1" class="t s2_1"><i><b>{{baptism.god_mothers_address }}</b></i></div>
 <div id="t1n_1" class="t s6_1"></div>
-<div id="t1o_1" class="t s5_1">Signature of parents/individual:_______________________________________________</div>
+{% if baptism.digital_signature %}
+<div id="t1o_1" class="t s5_1">Signature of parents/individual:<img src="{{baptism.digital_signature.url }}" alt="signature" style="width:500px;height:200px"></div>
+{% endif %}
 <div id="t1p_1" class="t s5_1">Official Use:</div>
 <div id="t1q_1" class="t s5_1">Date of Pre-Baptism Instruction </div>
 <div id="t1r_1" class="t s2_1">[</div>
@@ -78,8 +82,13 @@
 <div id="t1z_1" class="t s3_1">: _____________________________________________</div>
 <div id="t20_1" class="t s5_1">Time: _________</div>
 <div id="t21_1" class="t s5_1">Celebrant:</div>
-<div id="t22_1" class="t s2_1">________________________________________________________________</div>
-<div id="t23_1" class="t s9_1">Submit</div>
+<div id="t22_1" class="t s2_1">________________________________________________________________</div><br>
+<div id="t23_1" class="t s9_1">
+    <a class="btn btn-light" href="{% url 'dashboard' %}">Return To Dashboard</a>
+</div>
+
+
+<!--<button type="submit" class="btn btn-primary">Return</button>-->
 
 <!-- End text definitions -->
 

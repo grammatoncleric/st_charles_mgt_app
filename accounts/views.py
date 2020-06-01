@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from baptisms.models import Baptism
+from bookmasses.models import Bookmass
+from members.models import Member
 
 
 # Create your views here.
@@ -67,4 +70,16 @@ def logout(request):
         return redirect('login')
         
 def dashboard(request):
-        return render(request, 'accounts/dashboard.html')
+    if request.user.is_authenticated:
+      user_id=request.user.id
+
+      baptism_obj = Baptism.objects.order_by('-create_date').filter(user_id=user_id)
+      bookmass_obj = Bookmass.objects.order_by('-create_date').filter(user_id=user_id)
+      member_obj = Member.objects.order_by('-create_date').filter(user_id=user_id)
+
+      context={
+        'baptisms':baptism_obj,
+        'bookmasses':bookmass_obj,
+        'members':member_obj
+       }
+    return render(request, 'accounts/dashboard.html', context)

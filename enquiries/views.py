@@ -8,7 +8,7 @@ def enquiry(request):
           name=request.POST['name']
           email=request.POST['email']
           phone=request.POST['phone']
-          message=request.POST['message']
+          message=request.POST['message']         
           user_id=request.POST['user_id']
 
           contact = Enquiry(name=name, email=email, phone=phone, message=message, user_id=user_id)

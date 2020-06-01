@@ -27,7 +27,10 @@ def baptism(request):
         god_mothers_name=request.POST['god_mothers_name']
         god_mothers_mobile_no=request.POST['god_mothers_mobile_no']
         god_mothers_address=request.POST['god_mothers_address']
-        user_id=request.POST['user_id'] 
+        if not request.user.is_authenticated:
+          user_id=0
+        else:
+          user_id=request.POST['user_id']
 
         digital_signature = request.FILES['digital_signature']
         fs = FileSystemStorage()
