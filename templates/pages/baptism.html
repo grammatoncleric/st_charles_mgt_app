@@ -3,209 +3,208 @@
 {% load static %}
 
 {% block content %}
-<!--=====================
-          Content
-======================-->
-<section id="register" class="bg-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mx-auto">
-          <div class="banner-2"><img src="{% static 'img/page4_img5.jpg' %}" alt="" style="width: 100%;max-height: 100%">
-            <div class="banner-2_bot">
-              <div class="banner-2_title">
-                Register For Baptism!
-              </div>
-              <p>For your children's baptism and adult baptism, </p>
-              <p>please register here.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 mx-auto">
-            <div class="card">
-              <div class="card-header bg-primary text-white">
-                <h4>
-                  <i class="fas fa-user-plus"></i> Baptism Registration </h4>
-              </div>
-              <div class="card-body">
-                         <!--Alerts-->
-                         {% include 'partials/_alerts.html' %}
-                        
-  
-                       <form action="{% url 'baptism' %}" method="POST" enctype="multipart/form-data">
-  
-                          {% csrf_token %} 
-                          {% if user.is_authenticated %}
-                              <input type="hidden" name="user_id" value="{{ user.id }}">
-                              <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the baptism registration form. </b> </label>                        
-                          {% else %}
-                              <input type="hidden" name="user_id" value="0"> 
-                          {% endif %}
-                          <br/><br/>
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="inputtext4">Baptism Firstname</label>
-                              <input type="text" class="form-control" id="inputtext" placeholder="Firstname" name="bap_first_name" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="inputPassword4">Baptism Middlename</label>
-                              <input type="mobile" class="form-control" id="inputMobileNo" placeholder="Middlename" name="bap_middle_name" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputtext4">Baptism Lastname</label>
-                                <input type="text" class="form-control" id="inputtext" placeholder="Lastname" name="bap_last_name" required>
-                              </div>
-                          </div>                         
-                          <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputStartDate">Date of Birth</label>
-                                <input type="text" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD" name="date_of_birth" required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputEndDate">Place of Birth</label>
-                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Place of Birth" name="place_of_birth" required>
-                              </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Hometown</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="Hometown" name="home_town" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">State of Origin</label>
-                                  <select class="form-control" name="state_origin" required>
-                                    <option disabled selected>--Select State--</option>
-                                    <option value="Abia">Abia</option>
-                                    <option value="Adamawa">Adamawa</option>
-                                    <option value="Akwa Ibom">Akwa Ibom</option>
-                                    <option value="Anambra">Anambra</option>
-                                    <option value="Bauchi">Bauchi</option>
-                                    <option value="Bayelsa">Bayelsa</option>
-                                    <option value="Benue">Benue</option>
-                                    <option value="Borno">Borno</option>
-                                    <option value="Cross Rive">Cross River</option>
-                                    <option value="Delta">Delta</option>
-                                    <option value="Ebonyi">Ebonyi</option>
-                                    <option value="Edo">Edo</option>
-                                    <option value="Ekiti">Ekiti</option>
-                                    <option value="Enugu">Enugu</option>
-                                    <option value="FCT">Federal Capital Territory</option>
-                                    <option value="Gombe">Gombe</option>
-                                    <option value="Imo">Imo</option>
-                                    <option value="Jigawa">Jigawa</option>
-                                    <option value="Kaduna">Kaduna</option>
-                                    <option value="Kano">Kano</option>
-                                    <option value="Katsina">Katsina</option>
-                                    <option value="Kebbi">Kebbi</option>
-                                    <option value="Kogi">Kogi</option>
-                                    <option value="Kwara">Kwara</option>
-                                    <option value="Lagos">Lagos</option>
-                                    <option value="Nasarawa">Nasarawa</option>
-                                    <option value="Niger">Niger</option>
-                                    <option value="Ogun">Ogun</option>
-                                    <option value="Ondo">Ondo</option>
-                                    <option value="Osun">Osun</option>
-                                    <option value="Oyo">Oyo</option>
-                                    <option value="Plateau">Plateau</option>
-                                    <option value="Rivers">Rivers</option>
-                                    <option value="Sokoto">Sokoto</option>
-                                    <option value="Taraba">Taraba</option>
-                                    <option value="Yobe">Yobe</option>
-                                    <option value="Zamfara">Zamfara</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Contact Number (in case of adult baptism)</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="Mobile No" name="adult_mobile_no">
-                                </div>
 
-                              </div>
-                              <b>Parents' Details</b><br/><br/>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Father</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="fathers_name" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputEndDate">Phone No</label>
-                                  <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="fathers_mobile_no" required>
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Mother</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="mothers_name" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputEndDate">Phone No</label>
-                                  <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="mothers_mobile_no" required>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="inputListNames">Parents' Address</label>
-                                <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="parents_address" required>
-                              </div>
- 
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Marital Status</label>
-                                  <select class="form-control" name="parents_marital_status" required>
-                                    <option disabled selected>--Select--</option>
-                                    <option>Married</option>
-                                    <option>Seperated</option>
-                                    <option>Divorced</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputListNames">Parish of Wedding of Parents</label>
-                              <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="parents_marriage_parish" required>
-                            </div>
-                            <b>God-Parents' Details [God-parents must be practicing Catholics]</b><br/><br/>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputStartDate">God-Father</label>
-                                <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="god_fathers_name" required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputEndDate">Phone No</label>
-                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="god_fathers_mobile_no" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputListNames">Address</label>
-                              <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="god_fathers_address" required>
-                            </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputStartDate">God-Mother</label>
-                                <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="god_mothers_name" required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputEndDate">Phone No</label>
-                                <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="god_mothers_mobile_no" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputListNames">Address</label>
-                              <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="god_mothers_address" required>
-                            </div>
-                          <br/>
-                          <div class="form-group">
-                              <label for="exampleFormControlFile1">Upload Digital Signature (.jpg, .jpeg, .pdf, .png)</label>
-                              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="digital_signature" required>
-                          </div>
-                          <br/>
-                            
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-              </div>
-            </div>
-          </div>
+  <!-- ======= Baptism Section ======= -->
+  <section id="baptism" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Baptism Registration</h2>
+        <p>Register for your child's baptism</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-9">
+
+          <div class="card">
+              
+            <div class="card-body">   
+              <!--Alerts-->
+              {% include 'partials/_alerts.html' %}
+
+              <form action="{% url 'baptism' %}" method="POST" enctype="multipart/form-data">
+  
+                {% csrf_token %} 
+                {% if user.is_authenticated %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the baptism registration form. </b> </label>                        
+                {% else %}
+                    <input type="hidden" name="user_id" value="0"> 
+                {% endif %}
+                <br/><br/>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputtext4">Baptism Firstname</label>
+                    <input type="text" class="form-control" id="inputtext" placeholder="Firstname" name="bap_first_name" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPassword4">Baptism Middlename</label>
+                    <input type="mobile" class="form-control" id="inputMobileNo" placeholder="Middlename" name="bap_middle_name" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputtext4">Baptism Lastname</label>
+                      <input type="text" class="form-control" id="inputtext" placeholder="Lastname" name="bap_last_name" required>
+                    </div>
+                </div>                         
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputStartDate">Date of Birth</label>
+                      <input type="text" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD" name="date_of_birth" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputEndDate">Place of Birth</label>
+                      <input type="mobile" class="form-control" id="inputEndDate" placeholder="Place of Birth" name="place_of_birth" required>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Hometown</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="Hometown" name="home_town" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">State of Origin</label>
+                        <select class="form-control" name="state_origin" required>
+                          <option disabled selected>--Select State--</option>
+                          <option value="Abia">Abia</option>
+                          <option value="Adamawa">Adamawa</option>
+                          <option value="Akwa Ibom">Akwa Ibom</option>
+                          <option value="Anambra">Anambra</option>
+                          <option value="Bauchi">Bauchi</option>
+                          <option value="Bayelsa">Bayelsa</option>
+                          <option value="Benue">Benue</option>
+                          <option value="Borno">Borno</option>
+                          <option value="Cross Rive">Cross River</option>
+                          <option value="Delta">Delta</option>
+                          <option value="Ebonyi">Ebonyi</option>
+                          <option value="Edo">Edo</option>
+                          <option value="Ekiti">Ekiti</option>
+                          <option value="Enugu">Enugu</option>
+                          <option value="FCT">Federal Capital Territory</option>
+                          <option value="Gombe">Gombe</option>
+                          <option value="Imo">Imo</option>
+                          <option value="Jigawa">Jigawa</option>
+                          <option value="Kaduna">Kaduna</option>
+                          <option value="Kano">Kano</option>
+                          <option value="Katsina">Katsina</option>
+                          <option value="Kebbi">Kebbi</option>
+                          <option value="Kogi">Kogi</option>
+                          <option value="Kwara">Kwara</option>
+                          <option value="Lagos">Lagos</option>
+                          <option value="Nasarawa">Nasarawa</option>
+                          <option value="Niger">Niger</option>
+                          <option value="Ogun">Ogun</option>
+                          <option value="Ondo">Ondo</option>
+                          <option value="Osun">Osun</option>
+                          <option value="Oyo">Oyo</option>
+                          <option value="Plateau">Plateau</option>
+                          <option value="Rivers">Rivers</option>
+                          <option value="Sokoto">Sokoto</option>
+                          <option value="Taraba">Taraba</option>
+                          <option value="Yobe">Yobe</option>
+                          <option value="Zamfara">Zamfara</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Contact Number (in case of adult baptism)</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="Mobile No" name="adult_mobile_no">
+                      </div>
+
+                    </div>
+                    <b>Parents' Details</b><br/><br/>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Father</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="fathers_name" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputEndDate">Phone No</label>
+                        <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="fathers_mobile_no" required>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Mother</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="mothers_name" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputEndDate">Phone No</label>
+                        <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="mothers_mobile_no" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputListNames">Parents' Address</label>
+                      <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="parents_address" required>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Marital Status</label>
+                        <select class="form-control" name="parents_marital_status" required>
+                          <option disabled selected>--Select--</option>
+                          <option>Married</option>
+                          <option>Seperated</option>
+                          <option>Divorced</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputListNames">Parish of Wedding of Parents</label>
+                    <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="parents_marriage_parish" required>
+                  </div>
+                  <b>God-Parents' Details [God-parents must be practicing Catholics]</b><br/><br/>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputStartDate">God-Father</label>
+                      <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="god_fathers_name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputEndDate">Phone No</label>
+                      <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="god_fathers_mobile_no" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputListNames">Address</label>
+                    <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="god_fathers_address" required>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputStartDate">God-Mother</label>
+                      <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" name="god_mothers_name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputEndDate">Phone No</label>
+                      <input type="mobile" class="form-control" id="inputEndDate" placeholder="Mobile No" name="god_mothers_mobile_no" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputListNames">Address</label>
+                    <input type="text" class="form-control" id="inputListNames" placeholder="Address" name="god_mothers_address" required>
+                  </div>
+                <br/>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload Digital Signature (.jpg, .jpeg, .pdf, .png)</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="digital_signature" required>
+                </div>
+                <br/>
+                  
+                <input type="submit" value="Submit" class="btn btn-secondary">  
+              </form>
+            
+
+        </div>
 
       </div>
+
     </div>
+
+  </div>
+
+</div>
   </section>
+  <!-- End Contact Section -->
+
   
 {% endblock %}

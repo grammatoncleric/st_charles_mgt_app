@@ -7,242 +7,241 @@
 <script type="text/javascript">
 
 </script>
-<!--=====================
-          Content
-======================-->
-<section id="register" class="bg-light py-5">
-    <div class="container">
+
+  <!-- ======= Membership Section ======= -->
+  <section id="member" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Member Registration</h2>
+        <p>Register as St. Charles Borromeo Parish member</p>
+      </div>
+
       <div class="row">
-        <div class="col-md-4 mx-auto">
-          <div class="banner-2"><img src="{% static 'img/page3_img1.jpg' %}" alt="" style="width: 100%;max-height: 100%">
-            <div class="banner-2_bot">
-              <div class="banner-2_title">
-                Become a Member!
-              </div>
-              <p>St. Charles Borromeo Parish, 1004 welcomes you to join the parish.</p>
-            </div>
-          </div>
+
+        <div class="col-lg-9">
+
+          <div class="card">
+           
+            <div class="card-body">   
+              <!--Alerts-->
+              {% include 'partials/_alerts.html' %}
+
+              <form action="{% url 'member' %}" method="POST">
+  
+                {% csrf_token %} 
+                {% if user.is_authenticated %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the membership registration form. </b> </label>                        
+                {% else %}
+                    <input type="hidden" name="user_id" value="0"> 
+                {% endif %}
+                <br/><br/>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputStartDate">First Name</label>
+                    <input type="text" class="form-control" id="inputStartDate" placeholder="First Name"
+                    {% if user.is_authenticated %} value="{{ user.first_name }}" {%endif %} name="first_name" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEndDate">Last Name</label>
+                    <input type="text" class="form-control" id="inputEndDate" placeholder="Last Name"
+                    {% if user.is_authenticated %} value="{{ user.last_name }}" {%endif %} name="last_name" required>
+                  </div>
+                </div>  
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputStartDate">Email</label>
+                    <input type="text" class="form-control" id="inputStartDate" placeholder="Email Address"
+                    {% if user.is_authenticated %} value="{{ user.email }}" {%endif %} name="email" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEndDate">Phone</label>
+                    <input type="text" class="form-control" id="inputEndDate" placeholder="Mobile No"
+                    name="mobile_no" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                        <label for="inputListNames">Residence Address</label>
+                        <input type="text" class="form-control" id="inputListNames" placeholder="Residence Address"
+                        name="residence_address" required>
+                  </div>  
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                        <label for="inputListNames">Office Address</label>
+                        <input type="text" class="form-control" id="inputListNames" placeholder="Office Address"
+                        name="office_address" >
+                  </div> 
+               </div>      
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputStartDate">Date of Birth</label>
+                      <input type="text" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD"
+                      name="date_of_birth" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputStartDate">Gender</label>
+                      <select class="form-control" name="gender" required>
+                        <option disabled selected>--Select--</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">LGA</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="LGA" name="lga_origin">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">State of Origin</label>
+                        <select class="form-control" name="state_origin" required>
+                          <option disabled selected>--Select State--</option>
+                          <option value="Abia">Abia</option>
+                          <option value="Adamawa">Adamawa</option>
+                          <option value="Akwa Ibom">Akwa Ibom</option>
+                          <option value="Anambra">Anambra</option>
+                          <option value="Bauchi">Bauchi</option>
+                          <option value="Bayelsa">Bayelsa</option>
+                          <option value="Benue">Benue</option>
+                          <option value="Borno">Borno</option>
+                          <option value="Cross Rive">Cross River</option>
+                          <option value="Delta">Delta</option>
+                          <option value="Ebonyi">Ebonyi</option>
+                          <option value="Edo">Edo</option>
+                          <option value="Ekiti">Ekiti</option>
+                          <option value="Enugu">Enugu</option>
+                          <option value="FCT">Federal Capital Territory</option>
+                          <option value="Gombe">Gombe</option>
+                          <option value="Imo">Imo</option>
+                          <option value="Jigawa">Jigawa</option>
+                          <option value="Kaduna">Kaduna</option>
+                          <option value="Kano">Kano</option>
+                          <option value="Katsina">Katsina</option>
+                          <option value="Kebbi">Kebbi</option>
+                          <option value="Kogi">Kogi</option>
+                          <option value="Kwara">Kwara</option>
+                          <option value="Lagos">Lagos</option>
+                          <option value="Nasarawa">Nasarawa</option>
+                          <option value="Niger">Niger</option>
+                          <option value="Ogun">Ogun</option>
+                          <option value="Ondo">Ondo</option>
+                          <option value="Osun">Osun</option>
+                          <option value="Oyo">Oyo</option>
+                          <option value="Plateau">Plateau</option>
+                          <option value="Rivers">Rivers</option>
+                          <option value="Sokoto">Sokoto</option>
+                          <option value="Taraba">Taraba</option>
+                          <option value="Yobe">Yobe</option>
+                          <option value="Zamfara">Zamfara</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Occupation</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder=""
+                        name="occupation" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">Marital Status</label>
+                        <select class="form-control" name="marital_status" required>
+                          <option disabled selected>--Select--</option>
+                          <option>Married</option>
+                          <option>Single</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="labelmt"> Are you married in the Catholic Church?</label>
+                      </div>
+                      <div class="form-group col-md-3">
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="married_in_catholic" id="married_in_catholic" value="1" required>
+                              <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            </div>                            
+                      </div>
+                      <div class="form-group col-md-3">
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="married_in_catholic" id="married_in_catholic" value="0" required>
+                              <label class="form-check-label" for="inlineRadio2" selected>No</label>
+                          </div>   
+                      </div>
+                    </div>
+                    <br/>
+                    <b>Next of Kin Details</b><br/><br/>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputStartDate">NOK Name</label>
+                        <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" 
+                        name="nok_name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputEndDate">NOK Phone No</label>
+                        <input type="text" class="form-control" id="inputEndDate" placeholder="Mobile No"
+                        name="nok_phone">
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                            <label for="inputListNames">State the Sacrament(s) you have received</label>
+                            <input type="text" class="form-control" id="inputListNames" placeholder=""
+                            name="sacrament_received">
+                      </div> 
+                   </div>
+                   <div class="form-row">
+                    <div class="form-group col-md-12">
+                          <label for="inputListNames">When did you start worshipping in St. Charles Borromeo Catholic Church?</label>
+                          <input type="text" class="form-control" id="inputListNames" placeholder=""
+                          name="when_you_start_worship">
+                    </div> 
+                  </div>  
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="labelmt">Do you belong to any Association in St. Charles Borromeo Catholic Church?</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="belong_to_association" id="belong_to_association" value="1">
+                            <label class="form-check-label" for="inlineRadio1" selected>Yes</label>
+                          </div>                            
+                    </div>
+                    <div class="form-group col-md-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="belong_to_association" id="belong_to_association" value="0">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>   
+                    </div>
+                  </div>    
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                          <label for="inputListNames">If yes, state Association (s)</label>
+                          <input type="text" class="form-control" id="inputListNames" placeholder=""
+                          name="association_names">
+                    </div> 
+                  </div>      
+
+                   
+                  <input type="submit" value="Submit" class="btn btn-secondary">  
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+              </form>
+            
+
         </div>
-        <div class="col-md-8 mx-auto">
-            <div class="card">
-              <div class="card-header bg-primary text-white">
-                <h4>
-                  <i class="fas fa-user-plus"></i> Membership Registration </h4>
-              </div>
-              <div class="card-body">
-                         <!--Alerts-->
-                         {% include 'partials/_alerts.html' %}
-                        
-  
-                       <form action="{% url 'member' %}" method="POST">
-  
-                          {% csrf_token %} 
-                          {% if user.is_authenticated %}
-                              <input type="hidden" name="user_id" value="{{ user.id }}">
-                              <label for="logged"><b>Welcome, {{ user.first_name }} {{ user.last_name }}. Please fill the membership registration form. </b> </label>                        
-                          {% else %}
-                              <input type="hidden" name="user_id" value="0"> 
-                          {% endif %}
-                          <br/><br/>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="inputStartDate">First Name</label>
-                              <input type="text" class="form-control" id="inputStartDate" placeholder="First Name"
-                              {% if user.is_authenticated %} value="{{ user.first_name }}" {%endif %} name="first_name" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="inputEndDate">Last Name</label>
-                              <input type="text" class="form-control" id="inputEndDate" placeholder="Last Name"
-                              {% if user.is_authenticated %} value="{{ user.last_name }}" {%endif %} name="last_name" required>
-                            </div>
-                          </div>  
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="inputStartDate">Email</label>
-                              <input type="text" class="form-control" id="inputStartDate" placeholder="Email Address"
-                              {% if user.is_authenticated %} value="{{ user.email }}" {%endif %} name="email" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="inputEndDate">Phone</label>
-                              <input type="text" class="form-control" id="inputEndDate" placeholder="Mobile No"
-                              name="mobile_no" required>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-12">
-                                  <label for="inputListNames">Residence Address</label>
-                                  <input type="text" class="form-control" id="inputListNames" placeholder="Residence Address"
-                                  name="residence_address" required>
-                            </div>  
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-12">
-                                  <label for="inputListNames">Office Address</label>
-                                  <input type="text" class="form-control" id="inputListNames" placeholder="Office Address"
-                                  name="office_address" >
-                            </div> 
-                         </div>      
-                          <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputStartDate">Date of Birth</label>
-                                <input type="text" class="form-control" id="inputStartDate" placeholder="YYYY-MM-DD"
-                                name="date_of_birth" required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputStartDate">Gender</label>
-                                <select class="form-control" name="gender" required>
-                                  <option disabled selected>--Select--</option>
-                                  <option>Male</option>
-                                  <option>Female</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">LGA</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="LGA" name="lga_origin">
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">State of Origin</label>
-                                  <select class="form-control" name="state_origin" required>
-                                    <option disabled selected>--Select State--</option>
-                                    <option value="Abia">Abia</option>
-                                    <option value="Adamawa">Adamawa</option>
-                                    <option value="Akwa Ibom">Akwa Ibom</option>
-                                    <option value="Anambra">Anambra</option>
-                                    <option value="Bauchi">Bauchi</option>
-                                    <option value="Bayelsa">Bayelsa</option>
-                                    <option value="Benue">Benue</option>
-                                    <option value="Borno">Borno</option>
-                                    <option value="Cross Rive">Cross River</option>
-                                    <option value="Delta">Delta</option>
-                                    <option value="Ebonyi">Ebonyi</option>
-                                    <option value="Edo">Edo</option>
-                                    <option value="Ekiti">Ekiti</option>
-                                    <option value="Enugu">Enugu</option>
-                                    <option value="FCT">Federal Capital Territory</option>
-                                    <option value="Gombe">Gombe</option>
-                                    <option value="Imo">Imo</option>
-                                    <option value="Jigawa">Jigawa</option>
-                                    <option value="Kaduna">Kaduna</option>
-                                    <option value="Kano">Kano</option>
-                                    <option value="Katsina">Katsina</option>
-                                    <option value="Kebbi">Kebbi</option>
-                                    <option value="Kogi">Kogi</option>
-                                    <option value="Kwara">Kwara</option>
-                                    <option value="Lagos">Lagos</option>
-                                    <option value="Nasarawa">Nasarawa</option>
-                                    <option value="Niger">Niger</option>
-                                    <option value="Ogun">Ogun</option>
-                                    <option value="Ondo">Ondo</option>
-                                    <option value="Osun">Osun</option>
-                                    <option value="Oyo">Oyo</option>
-                                    <option value="Plateau">Plateau</option>
-                                    <option value="Rivers">Rivers</option>
-                                    <option value="Sokoto">Sokoto</option>
-                                    <option value="Taraba">Taraba</option>
-                                    <option value="Yobe">Yobe</option>
-                                    <option value="Zamfara">Zamfara</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Occupation</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder=""
-                                  name="occupation" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">Marital Status</label>
-                                  <select class="form-control" name="marital_status" required>
-                                    <option disabled selected>--Select--</option>
-                                    <option>Married</option>
-                                    <option>Single</option>
-                                  </select>
-                                </div>
-                              </div>
-
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="labelmt"> Are you married in the Catholic Church?</label>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="married_in_catholic" id="married_in_catholic" value="1" required>
-                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                      </div>                            
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="married_in_catholic" id="married_in_catholic" value="0" required>
-                                        <label class="form-check-label" for="inlineRadio2" selected>No</label>
-                                    </div>   
-                                </div>
-                              </div>
-                              <br/>
-                              <b>Next of Kin Details</b><br/><br/>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputStartDate">NOK Name</label>
-                                  <input type="text" class="form-control" id="inputStartDate" placeholder="Fullname" 
-                                  name="nok_name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputEndDate">NOK Phone No</label>
-                                  <input type="text" class="form-control" id="inputEndDate" placeholder="Mobile No"
-                                  name="nok_phone">
-                                </div>
-                              </div>
-
-                              <div class="form-row">
-                                <div class="form-group col-md-12">
-                                      <label for="inputListNames">State the Sacrament(s) you have received</label>
-                                      <input type="text" class="form-control" id="inputListNames" placeholder=""
-                                      name="sacrament_received">
-                                </div> 
-                             </div>
-                             <div class="form-row">
-                              <div class="form-group col-md-12">
-                                    <label for="inputListNames">When did you start worshipping in St. Charles Borromeo Catholic Church?</label>
-                                    <input type="text" class="form-control" id="inputListNames" placeholder=""
-                                    name="when_you_start_worship">
-                              </div> 
-                            </div>  
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="labelmt">Do you belong to any Association in St. Charles Borromeo Catholic Church?</label>
-                              </div>
-                              <div class="form-group col-md-3">
-                                  <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="belong_to_association" id="belong_to_association" value="1">
-                                      <label class="form-check-label" for="inlineRadio1" selected>Yes</label>
-                                    </div>                            
-                              </div>
-                              <div class="form-group col-md-3">
-                                  <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="belong_to_association" id="belong_to_association" value="0">
-                                      <label class="form-check-label" for="inlineRadio2">No</label>
-                                  </div>   
-                              </div>
-                            </div>    
-                            <div class="form-row">
-                              <div class="form-group col-md-12">
-                                    <label for="inputListNames">If yes, state Association (s)</label>
-                                    <input type="text" class="form-control" id="inputListNames" placeholder=""
-                                    name="association_names">
-                              </div> 
-                            </div>      
-
-                             
-                            
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-              </div>
-            </div>
-          </div>
 
       </div>
+
     </div>
+
+  </div>
+    
+  </div>
   </section>
+  <!-- End Contact Section -->
   
 {% endblock %}

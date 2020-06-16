@@ -1,28 +1,47 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="HandheldFriendly" content="true">
-    <link rel="icon" href="{% static 'img/favicon.ico' %}">
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'css/camera.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <!--<link rel="stylesheet" href="{% static 'css/all.css' %}">-->
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
     <title>St Charles Borromeo Church, 1004</title>
-</head>
-<body>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="{% static 'img/favicon.png' %}" rel="icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'css/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vendor/aos/aos.css' %}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+    <!-- =======================================================
+    * Template Name: Multi - v2.0.0
+    * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+  </head>
+  
+  <body>
 
   <!--Top Bar-->
 {% include 'partials/_topbar.html' %}
 
-<!--Nav Bar-->
-{% include 'partials/_navbar.html' %}
     
 <!--Main Content-->
     {% block content %}
@@ -34,48 +53,25 @@
 {% include 'partials/_footer.html' %}
 
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
-    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script> 
-    <script src="{% static 'js/superfish.js' %}"></script>
-    <script src="{% static 'js/jquery.equalheights.js' %}"></script>
-    <script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
-    <script src="{% static 'js/tmStickUp.js' %}"></script>
-    <script src="{% static 'js/jquery.ui.totop.js' %}"></script>
-    <script src="{% static 'js/camera.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.js' %}"></script> 
-    <!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="{% static 'js/jquery.mobile.customized.min.js' %}"></script>
-    <!--<![endif]-->
-    <script>
-     $(window).load(function(){
-      $().UItoTop({ easingType: 'easeOutQuart' });
-      $('#stuck_container').tmStickUp({});  
-    
-      $('#camera_wrap').camera({
-        loader: false,
-        pagination: false ,
-        minHeight: '400',
-        thumbnails: false,
-        height: '38.07291666666667%',
-        caption: false,
-        navigation: true,
-        fx: 'mosaic'
-      });
-    
-      $("#owl").owlCarousel({
-        items : 3, //10 items above 1000px browser width
-        itemsDesktop : [995,1], //5 items between 1000px and 901px
-        itemsDesktopSmall : [767, 1], // betweem 900px and 601px
-        itemsTablet: [700, 1], //2 items between 600 and 0
-        itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
-        navigation : true,
-        pagination :  false
-      }); 
-     }); 
-    </script>
+
+<div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'css/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'css/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'css/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'css/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'css/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'css/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'css/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'css/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'css/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'css/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
 </body>
 </html>

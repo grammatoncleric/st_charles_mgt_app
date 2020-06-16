@@ -4,161 +4,86 @@
 
 {% block content %}
 
-<!--=====================
-          Content
-======================-->
-<section class="slider_wrapper">
-    <div id="camera_wrap" class="">
-     <div data-src="{% static 'img/slide1.jpg' %}"></div>
-      <div data-src="{% static 'img/slide2.jpg' %}"></div>
-      <div data-src="{% static 'img/slide3.jpg'' %}"></div>  
-      <div data-src="{% static 'img/slide4.jpg'' %}"></div>  
-    </div>  
-  </section> 
-<section id="content"><div class="ic"></div>
-<article class="carousel_wrapper">
-    <div class="container_12">
-      <div class="grid_4">
-        <div class="banner">
-          <a href="#" class="banner_title">Church Event <br>
-  Schedule</a>
-          <div class="maxheight"><img src="{% static 'img/icon1.png' %}" alt="" ></div>
-      </div>
-    </div>
-      <div class="grid_4">
-        <div class="banner">
-          <a href="#" class="banner_title">Biblical <br>
-  Counseling</a>
-          <div class="maxheight"><img src="{% static 'img/icon2.png' %}" alt=""></div>
-        </div>
-      </div>
-      <div class="grid_4">
-        <div class="banner">
-          <a href="#" class="banner_title">Children's <br>
-            Catechism</a>
-          <div class="maxheight"><img src="{% static 'img/icon3.png' %}" alt=""></div>
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-</article>
-    <!--<article class="block-1">
-      <div class="container_12">
-        <div class="grid_12">
-          <h2>Meet Our Beloved Reverends</h2>
-        </div>
-        <div class="grid_4">
-          <img src="{% static 'img/page1_img1.jpg' %}" alt="">
-          <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#">Rev. Michael Da Archangel</a></div>
-            Lorem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit... 
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact section-bg">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Contact</h2>
+            <p>Contact Us</p>
           </div>
-        </div>
-        <div class="grid_4">
-          <img src="{% static 'img/page1_img2.jpg' %}" alt="">
-          <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#">Rev. Alexander Da Great</a></div>
-            Korem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sito... 
+  
+          <div class="row">
+  
+            <div class="col-lg-6">
+  
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="info-box">
+                    <i class="bx bx-map"></i>
+                    <h3>Our Address</h3>
+                    <p>1004 Estates, Victoria Island, Lagos</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="info-box mt-4">
+                    <i class="bx bx-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>stcharlesborromeo1004@gmail.com<br></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="info-box mt-4">
+                    <i class="bx bx-phone-call"></i>
+                    <h3>Call Us</h3>
+                    <p>+234 9096844458</p>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+  
+            <div class="col-lg-6">
+                  <!--Alerts-->
+                  {% include 'partials/_alerts.html' %}
+                  <form action="{% url 'enquiry' %}" method="POST" class="php-email-form"> 
+                    {% csrf_token %} 
+                    {% if user.is_authenticated %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                    {% else %}
+                        <input type="hidden" name="user_id" value="0"> 
+                    {% endif %}
+                    
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Name:</label>
+                    <input type="text" name="name" placeholder="Full Name" class="form-control" 
+                    {% if user.is_authenticated %} value="{{ user.last_name }} {{ user.first_name }}" {%endif %} required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-form-label">Email:</label>
+                    <input type="email" name="email" placeholder="Email" class="form-control" 
+                    {% if user.is_authenticated %} value="{{ user.email }}" {%endif %} required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone" class="col-form-label">Phone:</label>
+                    <input type="text" name="phone" placeholder="Mobile No" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="message" class="col-form-label">Message:</label>
+                    <textarea name="message" placeholder="Enter your Message" class="form-control"></textarea>
+                  </div>
+                  <hr>
+                  <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button> </div>
+                  
+                  <!--<input type="submit" value="Send Message" class="btn btn-block btn-info"> -->
+                </form>
+            </div>
+  
           </div>
   
         </div>
-       <div class="grid_4">
-          <img src="" alt="">
-          <div class="extra_wrapper">
-            <div class="block-1_title"><a href="#"></a></div>
-            
-          </div>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </article>-->
-    <div class="container_12">
-      <div class="grid_6">
-        <div class="block-2">
-          <img src="{% static 'img/b_icon1.png' %}" alt="">
-          <div class="text1"><a href="#">I’m New Here</a></div>
-          Amus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreeto 
-        </div>
-      </div>
-      <div class="grid_6">
-        <div class="block-2">
-          <img src="{% static 'img/b_icon2.png' %}" alt="">
-          <div class="text1"><a href="#">Care Ministries</a></div>
-          Rmus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreet 
-        </div>
-      </div>
-      <div class="grid_6">
-        <div class="block-2">
-          <img src="{% static 'img/b_icon3.png' %}" alt="">
-          <div class="text1"><a href="#">Prayer Request</a></div>
-          Hemus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreeti 
-        </div>
-      </div>
-      <div class="grid_6">
-        <div class="block-2">
-          <img src="{% static 'img/b_icon4.png' %}" alt="">
-          <div class="text1"><a href="#">Audio Podcasts</a></div>
-          Emus at magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoree 
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="clear sep-1"></div>
-    <article class="carousel_wrapper">
-      <div class="container_12">
-        <div class="grid_12">
-          <div id="owl">
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">July 25</div>
-                <p>The detailed description of the <a href="http://blog.templatemonster.com/free-website-templates/" rel="nofollow" class="color2">freebie</a> is published on the blog. <br><br>
-                Find <a href="http://www.templatemonster.com/properties/topic/society-people/" rel="nofollow" class="color2">society &amp; people themes</a> in the same name category at TemplateMonster.com</p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">August 17</div>
-                
-                <p>Horem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit wertolio mero dasererat rutrumrem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis</p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">September 10</div>
-                <p>Jorem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit wertolio mero dasererat rutrumrem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisise </p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">July 25</div>
-                <p>The detailed description of the <a href="http://blog.templatemonster.com/free-website-templates/" rel="nofollow" class="color2">freebie</a> is published on the blog. <br><br>
-                Find <a href="http://www.templatemonster.com/properties/topic/society-people/" rel="nofollow" class="color2">society &amp; people themes</a> in the same name category at TemplateMonster.com</p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">August 17</div>
-                
-                <p>Horem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit wertolio mero dasererat rutrumrem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis</p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="banner">
-                <div class="banner_title">September 10</div>
-                <p>Jorem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisis, sit wertolio mero dasererat rutrumrem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisise </p>
-                <a href="#" class="owl_link">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </article>
-  </section>
+      </section><!-- End Contact Section -->
+  
+    </main><!-- End #main -->
 
 {% endblock %}
